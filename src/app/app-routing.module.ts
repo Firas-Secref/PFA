@@ -8,8 +8,36 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'folder/test-map',
+    loadChildren: () => import('./test-map/test-map.module').then( m => m.TestMapPageModule)
+  },
+  {
+    path: 'authentification',
+    loadChildren: () => import('./authentification/authentification.module').then( m => m.AuthentificationPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'add-patient',
+    loadChildren: () => import('./pages/add-patient/add-patient.module').then( m => m.AddPatientPageModule)
+  },
+  {
+    path: 'pations-pop-over',
+    loadChildren: () => import('./popovers/pations-pop-over/pations-pop-over.module').then( m => m.PationsPopOverPageModule)
+  },
+  {
+    path: 'show-patient',
+    loadChildren: () => import('./pages/show-patient/show-patient.module').then( m => m.ShowPatientPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   }
 ];
 

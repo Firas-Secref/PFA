@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>addPatient</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="d-flex justify-content-center">
+          <ion-avatar class="ion-margin-start ">
+            <img src="./avatar.svg">
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+
+        <ion-col >
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">First Name</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col >
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Last Name</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col >
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-radio-group>
+        <ion-list-header>Sexe</ion-list-header>
+        <ion-row>
+
+          <ion-col>
+            <ion-item-group>
+
+            <ion-item class="rounded-shape-persoMale">
+              <ion-label>Male</ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+
+            <ion-item class="rounded-shape-persoFemale">
+              <ion-label>Female</ion-label>
+              <ion-radio></ion-radio>
+            </ion-item>
+            </ion-item-group>
+
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item class="rounded-shape">
+              <ion-label>Birth Date</ion-label>
+              <ion-datetime placeholder="Select Date"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-radio-group>
+      <ion-row>
+        <ion-col>
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Ville</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col>
+            <ion-item class="rounded-shape">
+              <ion-label position="stacked">Family Numbers</ion-label>
+              <ion-input type="number"></ion-input>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Phone Number 1</ion-label>
+            <ion-input type="tel"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Phone Number 2</ion-label>
+            <ion-input type="tel"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-col class="d-flex justify-content-center">
+        <ion-button class="field" expand="round">Submit</ion-button>
+      </ion-col>
+    </ion-grid>
+  </form>
+</ion-content>
