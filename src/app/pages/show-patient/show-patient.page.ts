@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {NavParams} from "@ionic/angular";
+import {Patient} from "../../Entity/Patient";
+import {EventDrivenService} from "../../services/event-driven.service";
 
 @Component({
   selector: 'app-show-patient',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowPatientPage implements OnInit {
 
-  constructor() { }
+patient: Patient;
+  constructor(private navParams: NavParams, private eventDriven: EventDrivenService) {
+    this.patient = this.navParams.get("patient");
+  }
 
   ngOnInit() {
+    // this.eventDriven.sourceEventSubjectObservable.subscribe(data =>{
+    //   console.log("workk")
+    //   console.log(data)
+    // })
+
+    console.log("b gggvg",this.patient)
   }
 
 }

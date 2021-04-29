@@ -4,7 +4,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    loadChildren: () => import('./pages/add-patient/add-patient.module').then( m => m.AddPatientPageModule),
+
+    // redirectTo: 'folder/Inbox',
     pathMatch: 'full'
   },
   {
@@ -38,6 +40,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'add-location',
+    loadChildren: () => import('./pages/add-location/add-location.module').then( m => m.AddLocationPageModule)
   }
 ];
 

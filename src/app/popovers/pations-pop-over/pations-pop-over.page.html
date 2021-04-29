@@ -4,8 +4,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>Show Patient's details</ion-item>
-    <ion-item>Update Patient's details</ion-item>
-    <ion-item>Delete Patient's details</ion-item>
+    <ion-item (click)="openShowPatientModal()" button>Show Patient's details</ion-item>
+    <ion-item button>Update Patient's details</ion-item>
+    <ion-item (click)="presentAlert()" button>Delete Patient's details</ion-item>
   </ion-list>
 </ion-content>

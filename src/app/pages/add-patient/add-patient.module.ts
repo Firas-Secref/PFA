@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {CommonModule, DatePipe} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +13,12 @@ import { AddPatientPage } from './add-patient.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPatientPageRoutingModule
+    AddPatientPageRoutingModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    AddPatientPage
   ],
   declarations: [AddPatientPage]
 })

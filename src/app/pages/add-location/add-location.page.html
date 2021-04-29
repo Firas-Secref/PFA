@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>addLocation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <div id="map">
+
+    <ion-fab class="pos" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="getLocation()">
+        <ion-icon name="locate"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+  <ion-button expand="block" (click)="validateLocation()">Validate</ion-button>
+
+</ion-content>

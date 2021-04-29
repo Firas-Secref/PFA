@@ -14,4 +14,6 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   constructor() {}
+
+
 }

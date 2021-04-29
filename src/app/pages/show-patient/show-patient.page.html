@@ -21,7 +21,7 @@
 
     <ion-row>
       <ion-col class="d-flex justify-content-center">
-        <h5>Avatar</h5>
+        <h5>{{patient.firstName}} {{patient.lastName}}</h5>
       </ion-col>
     </ion-row>
 
@@ -32,7 +32,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="calendar-number"></ion-icon>
           <ion-label>
-            <p>1969-6-9</p>
+            <p>{{patient.birthDate| date}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -59,7 +59,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="call"></ion-icon>
           <ion-label>
-            <p>69-69-69-69</p>
+            <p>{{patient.phoneNumber}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -71,7 +71,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="male-female"></ion-icon>
           <ion-label>
-            <p>Male- Female</p>
+            <p>{{patient.sexe}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -83,7 +83,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="people"></ion-icon>
           <ion-label>
-            <p>69</p>
+            <p>{{patient.familyNumber}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -95,7 +95,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="call"></ion-icon>
           <ion-label>
-            <p>69-69-69-69</p>
+            <p>{{patient.familyPhoneNumber1}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -106,7 +106,7 @@
         <ion-item class="rounded-shape">
           <ion-icon slot="start" name="call"></ion-icon>
           <ion-label>
-            <p>69-69-69-69</p>
+            <p>{{patient.familyPhoneNumber2}}</p>
           </ion-label>
         </ion-item>
       </ion-col>
