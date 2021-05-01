@@ -25,8 +25,6 @@ export class PatientService {
   }
 
   public deletePatient(id: number): Observable<any>{
-
-
     return this.http.delete<void>(`${this.apiServerUrlPatient}/deletePatient/${id}`);
   }
 }

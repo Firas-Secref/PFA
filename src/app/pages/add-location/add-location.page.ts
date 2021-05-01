@@ -6,6 +6,8 @@ import 'leaflet/dist/images/marker-icon-2x.png'
 import {marker} from "leaflet";
 import {ModalController, NavParams} from "@ionic/angular";
 import {Location} from "../../Entity/Location";
+import {LocationService} from "../../services/location.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-add-location',
@@ -18,7 +20,8 @@ export class AddLocationPage implements OnInit {
   position: any;
   posMarker: any;
   newMarker: any;
-  constructor(private geolocation: Geolocation, private navParams: NavParams, private modal: ModalController) {
+  constructor(private geolocation: Geolocation, private navParams: NavParams,
+              private modal: ModalController, private locationService: LocationService) {
   }
 
   ngOnInit() {
@@ -79,10 +82,18 @@ export class AddLocationPage implements OnInit {
 
     let   patientLocation:Location = {id: null, latitude: null, longitude: null, radius: null};
 
-    console.log(patientLocation.latitude)
     patientLocation.latitude = this.newMarker.getLatLng().lat;
     patientLocation.longitude = this.newMarker.getLatLng().lng;
     patientLocation.radius = 350;
+
+    this.locationService.addLocation(patientLocation).subscribe((response: Location) =>{
+      console.log(response.id)
+      patientLocation.id = response.id;
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message)
+    })
+
     this.modal.dismiss({
       location : patientLocation
     })
