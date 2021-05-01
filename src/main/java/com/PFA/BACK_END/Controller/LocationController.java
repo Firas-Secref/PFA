@@ -40,4 +40,9 @@ public class LocationController  {
     public Location upDateLocation(@RequestBody Location location){
         return this.locationService.updateLocation(location);
     }
+
+    @GetMapping("getLoc/{lat}/{lng}")
+    public Location getLocation(@PathVariable float lat, @PathVariable float lng){
+        return this.locationService.getLocation(lat, lng);
+    }
 }

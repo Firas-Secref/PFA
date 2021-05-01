@@ -40,7 +40,9 @@ public class PatientService {
         existingPatient.setSexe(patient.getSexe());
         existingPatient.setFamilyNumber(patient.getFamilyNumber());
         existingPatient.setPhoneNumber(patient.getPhoneNumber());
-        existingPatient.setFamilyPhoneNumbers(patient.getFamilyPhoneNumbers());
+        existingPatient.setPhoneNumber1(patient.getPhoneNumber1());
+        existingPatient.setPhoneNumber2(patient.getPhoneNumber2());
+
 
         return this.patientRepository.save(existingPatient);
     }

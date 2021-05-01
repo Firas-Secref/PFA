@@ -14,7 +14,7 @@ public class SuperUser implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private String birthDate;
     private String email;
     private String password;
     private String phoneNumber;
@@ -22,7 +22,8 @@ public class SuperUser implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Patient> patients;
 
-    public SuperUser(String firstName, String lastName, LocalDate birthDate, String email, String password, String phoneNumber, String address) {
+    public SuperUser(String firstName, String lastName, String birthDate, String email, String password,
+                     String phoneNumber, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -59,11 +60,11 @@ public class SuperUser implements Serializable {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

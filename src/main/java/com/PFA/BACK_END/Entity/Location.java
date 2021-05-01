@@ -11,8 +11,8 @@ public class Location implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long latitude;
-    private Long longitude;
+    private float latitude;
+    private float longitude;
     private Long radius;
     @OneToMany(mappedBy = "location")
     private List<Patient> patients;
@@ -34,19 +34,19 @@ public class Location implements Serializable{
         this.id = id;
     }
 
-    public Long getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Long latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
-    public Long getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Long longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 
@@ -57,4 +57,6 @@ public class Location implements Serializable{
     public void setRadius(Long radius) {
         this.radius = radius;
     }
+
+
 }

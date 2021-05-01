@@ -3,7 +3,6 @@ package com.PFA.BACK_END.services;
 import com.PFA.BACK_END.Entity.SuperUser;
 import com.PFA.BACK_END.Exceptions.UserNotFoundException;
 import com.PFA.BACK_END.Repository.SuperUserRepository;
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.stereotype.Service;
 
 @Service

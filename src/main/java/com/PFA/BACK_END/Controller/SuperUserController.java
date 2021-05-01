@@ -10,6 +10,10 @@ public class SuperUserController {
 
     private SuperUserService userService;
 
+    public SuperUserController(SuperUserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("/addUser")
     public SuperUser addUser(@RequestBody SuperUser user){
         return this.userService.addSuperUser(user);

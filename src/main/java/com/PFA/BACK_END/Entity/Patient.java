@@ -2,7 +2,6 @@ package com.PFA.BACK_END.Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 public class Patient implements Serializable {
@@ -19,7 +18,9 @@ public class Patient implements Serializable {
     private String address;
     private String phoneNumber;
     private int familyNumber;
-    private String[] familyPhoneNumbers;
+    private String PhoneNumber1;
+    private String PhoneNumber2;
+
     @ManyToOne
     private SuperUser user;
     @ManyToOne
@@ -36,8 +37,7 @@ public class Patient implements Serializable {
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String username, String email, String birthDate, String sexe,
-                   String ville, String address, String phoneNumber, int familyNumber, String[] familyPhoneNumbers) {
+    public Patient(String firstName, String lastName, String username, String email, String birthDate, String sexe, String ville, String address, String phoneNumber, int familyNumber, String phoneNumber1, String phoneNumber2, SuperUser user, Location location) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -48,7 +48,10 @@ public class Patient implements Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.familyNumber = familyNumber;
-        this.familyPhoneNumbers = familyPhoneNumbers;
+        PhoneNumber1 = phoneNumber1;
+        PhoneNumber2 = phoneNumber2;
+        this.user = user;
+        this.location = location;
     }
 
     public String getFirstName() {
@@ -103,12 +106,36 @@ public class Patient implements Serializable {
         this.familyNumber = familyNumber;
     }
 
-    public String[] getFamilyPhoneNumbers() {
-        return familyPhoneNumbers;
+    public String getPhoneNumber1() {
+        return PhoneNumber1;
     }
 
-    public void setFamilyPhoneNumbers(String[] familyPhoneNumbers) {
-        this.familyPhoneNumbers = familyPhoneNumbers;
+    public void setPhoneNumber1(String phoneNumber1) {
+        PhoneNumber1 = phoneNumber1;
+    }
+
+    public String getPhoneNumber2() {
+        return PhoneNumber2;
+    }
+
+    public void setPhoneNumber2(String phoneNumber2) {
+        PhoneNumber2 = phoneNumber2;
+    }
+
+    public SuperUser getUser() {
+        return user;
+    }
+
+    public void setUser(SuperUser user) {
+        this.user = user;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public void setFirstName(String firstName) {

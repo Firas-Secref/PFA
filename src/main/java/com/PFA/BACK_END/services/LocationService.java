@@ -48,4 +48,8 @@ public class LocationService {
     public Location addNewLocation(Location location){
         return this.locationRepository.save(location);
     }
+
+    public Location getLocation(float lat, float lng){
+        return this.locationRepository.findLocationByLatitudeEqualsAndAndLongitudeEquals(lat, lng);
+    }
 }
