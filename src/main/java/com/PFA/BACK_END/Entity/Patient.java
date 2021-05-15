@@ -1,9 +1,13 @@
 package com.PFA.BACK_END.Entity;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,32 +16,27 @@ public class Patient implements Serializable {
     private String lastName;
     private String username;
     private String email;
+    private String password;
     private String birthDate;
     private String sexe;
     private String ville;
     private String address;
     private String phoneNumber;
     private int familyNumber;
-    private String PhoneNumber1;
-    private String PhoneNumber2;
-
+    private String phoneNumber1;
+    private String phoneNumber2;
+    private String role;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String profileImage;
     @ManyToOne
     private SuperUser user;
     @ManyToOne
     private Location location;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Patient() {
-    }
-
-    public Patient(String firstName, String lastName, String username, String email, String birthDate, String sexe, String ville, String address, String phoneNumber, int familyNumber, String phoneNumber1, String phoneNumber2, SuperUser user, Location location) {
+    public Patient(String firstName, String lastName, String username, String email,
+                   String birthDate, String sexe, String ville, String address, String phoneNumber,
+                   int familyNumber, String phoneNumber1, String phoneNumber2, String profileImage) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -48,14 +47,29 @@ public class Patient implements Serializable {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.familyNumber = familyNumber;
-        PhoneNumber1 = phoneNumber1;
-        PhoneNumber2 = phoneNumber2;
-        this.user = user;
-        this.location = location;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.profileImage = profileImage;
+        this.role = "PATIENT";
+    }
+
+    public Patient() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -64,6 +78,14 @@ public class Patient implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -90,6 +112,22 @@ public class Patient implements Serializable {
         this.sexe = sexe;
     }
 
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -107,19 +145,27 @@ public class Patient implements Serializable {
     }
 
     public String getPhoneNumber1() {
-        return PhoneNumber1;
+        return phoneNumber1;
     }
 
     public void setPhoneNumber1(String phoneNumber1) {
-        PhoneNumber1 = phoneNumber1;
+        this.phoneNumber1 = phoneNumber1;
     }
 
     public String getPhoneNumber2() {
-        return PhoneNumber2;
+        return phoneNumber2;
     }
 
     public void setPhoneNumber2(String phoneNumber2) {
-        PhoneNumber2 = phoneNumber2;
+        this.phoneNumber2 = phoneNumber2;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
     public SuperUser getUser() {
@@ -138,31 +184,19 @@ public class Patient implements Serializable {
         this.location = location;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getPassword() {
+        return password;
     }
 
-    public String getUsername() {
-        return username;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getRole() {
+        return role;
     }
 
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

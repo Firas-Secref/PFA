@@ -1,12 +1,15 @@
 package com.PFA.BACK_END.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class SuperUser implements Serializable {
 
     @Id
@@ -14,26 +17,40 @@ public class SuperUser implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
+    private String username;
     private String birthDate;
+    private String sexe;
+    private String ville;
     private String email;
     private String password;
     private String phoneNumber;
     private String address;
+    private String role;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String profileImage;
     @OneToMany(mappedBy = "user")
     private List<Patient> patients;
 
-    public SuperUser(String firstName, String lastName, String birthDate, String email, String password,
-                     String phoneNumber, String address) {
+    public SuperUser() {
+    }
+
+    public SuperUser(String firstName, String lastName, String username, String birthDate,
+                     String sexe, String ville, String email, String password, String phoneNumber,
+                     String address, String profileImage, List<Patient> patients) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.birthDate = birthDate;
+        this.sexe = sexe;
+        this.ville = ville;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
-    }
-
-    public SuperUser() {
+        this.profileImage = profileImage;
+        this.patients = patients;
+        this.role = "ADMIN";
     }
 
     public Long getId() {
@@ -60,12 +77,36 @@ public class SuperUser implements Serializable {
         this.lastName = lastName;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getBirthDate() {
         return birthDate;
     }
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
     public String getEmail() {
@@ -98,5 +139,29 @@ public class SuperUser implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
