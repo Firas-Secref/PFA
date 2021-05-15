@@ -10,23 +10,25 @@ import {Patient} from "../../Entity/Patient";
 import {catchError, map, startWith} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ShowPatientPage} from "../show-patient/show-patient.page";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage implements OnInit{
 
   id=5;
   patients?: Patient[];
   constructor(private popoverController: PopoverController, private modal: ModalController,
               private eventDriven: EventDrivenService, private patientService: PatientService,
-              private alert: AlertController) { }
+              private alert: AlertController, private router: Router) { }
 
   ngOnInit() {
     this.getAllPatient();
   }
+
 
   async openPopover(ev, patient) {
     this.eventDriven.publishEvent(patient);
@@ -51,15 +53,9 @@ export class DashboardPage implements OnInit {
 
   }
 
-  async addPatient() {
+  addPatient() {
     console.log("okk")
-    const modal = await this.modal.create({
-      component: AddPatientPage,
-    });
-    modal.onDidDismiss().then(() =>{
-      this.getAllPatient();
-    })
-    return await modal.present();
+    this.router.navigateByUrl("add-patient");
   }
 
 

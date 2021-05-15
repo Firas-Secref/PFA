@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
+    "@ionic-native/camera": "^5.32.1",
     "@ionic-native/core": "^5.32.1",
     "@ionic-native/geolocation": "^5.32.1",
     "@ionic-native/http": "^4.20.0",
@@ -30,6 +31,7 @@
     "@types/proj4": "^2.5.0",
     "bootstrap": "^4.6.0",
     "cordova-plugin-geolocation": "^4.1.0",
+    "font-awesome": "^4.7.0",
     "ionic-angular": "^3.9.10",
     "leaflet": "^1.7.1",
     "proj4": "^2.7.2",
@@ -50,6 +52,7 @@
     "codelyzer": "^6.0.0",
     "cordova-android": "^9.1.0",
     "cordova-plugin-advanced-http": "^3.1.0",
+    "cordova-plugin-camera": "^5.0.1",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -81,7 +84,10 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-advanced-http": {}
+      "cordova-plugin-advanced-http": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "android"

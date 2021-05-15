@@ -16,8 +16,8 @@ export class PatientService {
     return this.http.get<Patient[]>(`${this.apiServerUrlPatient}/getAllPatient`);
   }
 
-  public addPatient(patient: Patient):Observable<Patient>{
-    return this.http.post<Patient>(`${this.apiServerUrlPatient}/addPatient`, patient);
+  public addPatient(formData: FormData):Observable<any>{
+    return this.http.post<FormData>(`${this.apiServerUrlPatient}/addPatient`, formData);
   }
 
   public updatePatient(patient: Patient):Observable<Patient>{

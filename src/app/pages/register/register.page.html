@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,6 +8,9 @@
   <form [formGroup]="form">
     <ion-grid>
 
+      <div class="wrapper" id="fileInput">
+        <input type="file" class="my_file" (change)="onFileChanged($event)">
+      </div>
       <ion-row>
 
         <ion-col >
@@ -30,6 +33,15 @@
           <ion-item class="rounded-shape">
             <ion-label position="stacked">Username</ion-label>
             <ion-input formControlName="username"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col >
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>

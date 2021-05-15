@@ -14,8 +14,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public addUser(user: User): Observable<User>{
-    return this.http.post<User>(`${this.apiServerUrlUser}/addUser`, user);
+  public addUser(formData: FormData): Observable<any>{
+    return this.http.post<FormData>(`${this.apiServerUrlUser}/addUser`, formData);
   }
 
   public getUser(id: number): Observable<User>{
@@ -24,5 +24,9 @@ export class UserService {
 
   public updateUser(user: User): Observable<User>{
     return this.http.put<User>(`${this.apiServerUrlUser}/updateUser`,user);
+  }
+
+  public getUserByUsername(username: string): Observable<User>{
+    return this.http.get<User>(`${this.apiServerUrlUser}/getUserByUsername/${username}`);
   }
 }

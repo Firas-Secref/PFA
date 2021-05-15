@@ -11,6 +11,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {Geolocation} from "@ionic-native/geolocation/ngx";
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
 
 
 
@@ -19,7 +21,9 @@ import {Geolocation} from "@ionic-native/geolocation/ngx";
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AgmCoreModule, HttpClientModule, ReactiveFormsModule],
-  providers: [Geolocation,
+  providers: [
+    Geolocation,
+    Camera,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, DatePipe],
   bootstrap: [AppComponent],
   exports: [

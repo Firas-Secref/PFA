@@ -1,22 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addPatient</ion-title>
+    <ion-title>Add patient</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [scrollEvents]="true">
+
   <form [formGroup]="addPatientForm" >
 
     <ion-grid>
-      <ion-row>
-        <ion-col class="d-flex justify-content-center">
-          <ion-avatar class="ion-margin-start ">
-            <img src="./avatar.svg">
-          </ion-avatar>
-        </ion-col>
-      </ion-row>
-      <ion-row>
 
+      <div class="wrapper" id="fileInput">
+        <input type="file" class="my_file" (change)="onFileChanged($event)">
+      </div>
+
+      <ion-row>
+<!--        <img class="taillephoto" [src]="imgurl">-->
         <ion-col >
           <ion-item class="rounded-shape">
             <ion-label position="stacked">First Name</ion-label>
@@ -31,6 +30,7 @@
           </ion-item>
         </ion-col>
       </ion-row>
+
 
       <ion-row>
         <ion-col>
@@ -50,11 +50,21 @@
       <ion-row>
         <ion-col>
           <ion-item class="rounded-shape">
-            <ion-label position="stacked">Phone Number</ion-label>
-            <ion-input type="number" formControlName="phoneNumber"></ion-input>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item class="rounded-shape">
+            <ion-label position="stacked">Phone Number</ion-label>
+            <ion-input type="text" formControlName="phoneNumber"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
       <ion-row>
         <ion-col>
           <ion-item class="rounded-shape">
@@ -129,14 +139,14 @@
         <ion-col>
           <ion-item class="rounded-shape">
             <ion-label position="stacked">Phone Number 1</ion-label>
-            <ion-input type="tel" formControlName="familyPhoneNumber1"></ion-input>
+            <ion-input type="text" formControlName="familyPhoneNumber1"></ion-input>
           </ion-item>
         </ion-col>
 
         <ion-col>
           <ion-item class="rounded-shape">
             <ion-label position="stacked" >Phone Number 2</ion-label>
-            <ion-input type="tel" formControlName="familyPhoneNumber2"></ion-input>
+            <ion-input type="text" formControlName="familyPhoneNumber2"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>

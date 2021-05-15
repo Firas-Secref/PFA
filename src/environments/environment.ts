@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiBaseUrlPatient: 'http://localhost:8080/patient',
   apiBaseUrlLocation: 'http://localhost:8080/location',
-  apiBaseUrlUser: 'http://localhost:8080/user'
+  apiBaseUrlUser: 'http://localhost:8080/user',
+
 };
 
 /*
