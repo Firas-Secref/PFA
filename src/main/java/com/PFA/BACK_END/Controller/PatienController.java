@@ -44,5 +44,19 @@ public class PatienController {
         return this.patientService.deletePatient(id);
     }
 
+    @GetMapping("/getID/{username}")
+    public Long getUserIdByUsername(@PathVariable String username){
+        return this.patientService.getUserId(username);
+    }
+//    @GetMapping("/myPatients/{username}")
+//    public List<Patient> getMyPatients(@PathVariable String username){
+//        return this.patientService.getMyPatients(username);
+//    }
+
+    @GetMapping("/getPatientId/{username}")
+    public Long getIdByUsername(@PathVariable String username){
+        return this.patientService.getUserId(username);
+    }
+
 }
 

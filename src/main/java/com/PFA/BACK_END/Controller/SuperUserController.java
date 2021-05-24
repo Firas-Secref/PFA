@@ -1,5 +1,6 @@
 package com.PFA.BACK_END.Controller;
 
+import com.PFA.BACK_END.Entity.Patient;
 import com.PFA.BACK_END.Entity.SuperUser;
 import com.PFA.BACK_END.services.SuperUserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -49,4 +51,15 @@ public class SuperUserController {
     public SuperUser getUserByUsername(@PathVariable String username){
         return this.userService.findByUsername(username);
     }
+
+    @GetMapping("getId/{username}")
+    public Long getId(@PathVariable String username){
+        return this.userService.getId(username);
+    }
+
+//
+//    @GetMapping("get/{id}")
+//    public List<Patient> getMy(@PathVariable Long id){
+//        return this.userService.getMyPatients(id);
+//    }
 }

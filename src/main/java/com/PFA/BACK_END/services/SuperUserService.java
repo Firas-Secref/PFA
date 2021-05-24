@@ -10,6 +10,7 @@ import com.PFA.BACK_END.Repository.SuperUserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class SuperUserService {
@@ -97,6 +99,7 @@ public class SuperUserService {
         System.out.println(usernameAndPassword.getUsername());
 
         SuperUser user = this.findByUsername(usernameAndPassword.getUsername());
+        Patient patient = this.patientRepository.findByUsername(usernameAndPassword.getUsername());
 //        Patient patient = this.findPatientByUsername(usernameAndPassword.getUsername());
         if (user!=null){
             if (passwordEncoder.matches(usernameAndPassword.getPassword(), user.getPassword())){
@@ -110,4 +113,10 @@ public class SuperUserService {
         return false;
 
     }
+
+    public Long getId(String username){
+        return this.superUserRepository.findId(username);
+    }
+
+
 }

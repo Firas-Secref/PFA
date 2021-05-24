@@ -5,6 +5,7 @@ import com.PFA.BACK_END.Entity.Patient;
 import com.PFA.BACK_END.Entity.SuperUser;
 import com.PFA.BACK_END.Exceptions.PatientNotFoundException;
 import com.PFA.BACK_END.Repository.PatientRepository;
+import com.PFA.BACK_END.Repository.SuperUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,9 @@ public class PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private SuperUserRepository userRepository;
 
     public List<Patient> getAllPatients(){
         return this.patientRepository.findAll();
@@ -78,5 +82,17 @@ public class PatientService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(password);
     }
+
+    public Long getUserId(String username){
+        return this.patientRepository.findId(username);
+    }
+
+    public Long getPatientId(String username){
+        return this.patientRepository.findId(username);
+    }
+//    public List<Patient> getMyPatients(String username){
+//        return this.patientRepository.getMyPatients(username);
+//    }
+
 
 }

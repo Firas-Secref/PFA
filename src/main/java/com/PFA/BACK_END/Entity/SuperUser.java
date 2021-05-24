@@ -1,15 +1,17 @@
 package com.PFA.BACK_END.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
+import java.util.Set;
+@Data
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-
 public class SuperUser implements Serializable {
 
     @Id
@@ -30,7 +32,14 @@ public class SuperUser implements Serializable {
     @Column(columnDefinition = "MEDIUMBLOB")
     private String profileImage;
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Patient> patients;
+
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private Set<Role> roles;
 
     public SuperUser() {
     }
