@@ -155,15 +155,4 @@ export class AddPatientPage implements OnInit {
     }
   }
 
-  scrollDown() {
-    this.content.scrollToBottom();
-  }
-
-  getLocation() {
-
-  }
-
-  validateLocation() {
-
-  }
 }

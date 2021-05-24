@@ -31,7 +31,7 @@
 
       <ion-item *ngFor="let patient of patients" button (click)="openPopover($event, patient)">
         <ion-avatar slot="start">
-          <img src="">
+          <img [src]="">
         </ion-avatar>
         <ion-label>
           <h2>{{patient.firstName}} {{patient.lastName}}</h2>

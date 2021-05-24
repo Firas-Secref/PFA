@@ -16,7 +16,8 @@ export class Patient {
    PhoneNumber1: string;
    PhoneNumber2: string;
    profileImage: any;
-  location: Location;
+   location: Location;
+   user: number
 
 
   constructor(firstName: string, lastName: string, username: string, email: string, password: string, birthDate: string, sexe: string, ville: string, address: string, phoneNumber: string, familyNumber: number, PhoneNumber1: string, PhoneNumber2: string) {

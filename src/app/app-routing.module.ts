@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'show-profile',
     loadChildren: () => import('./pages/show-profile/show-profile.module').then( m => m.ShowProfilePageModule),
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'patient-interface',
+    loadChildren: () => import('./pages/patient-interface/patient-interface.module').then( m => m.PatientInterfacePageModule)
   }
 ];
 

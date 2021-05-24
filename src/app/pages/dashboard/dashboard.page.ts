@@ -7,7 +7,7 @@ import {ActionEvent, AppDataState, DataStateEnum, PatientActionsType} from "../.
 import {PatientService} from "../../services/patient.service";
 import {Observable, of} from "rxjs";
 import {Patient} from "../../Entity/Patient";
-import {catchError, map, startWith} from "rxjs/operators";
+import {catchError, filter, map, mergeMap, startWith} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ShowPatientPage} from "../show-patient/show-patient.page";
 import {Router} from "@angular/router";
@@ -19,14 +19,14 @@ import {Router} from "@angular/router";
 })
 export class DashboardPage implements OnInit{
 
-  id=5;
-  patients?: Patient[];
+  patients: Patient[] = [];
   constructor(private popoverController: PopoverController, private modal: ModalController,
               private eventDriven: EventDrivenService, private patientService: PatientService,
               private alert: AlertController, private router: Router) { }
 
   ngOnInit() {
-    this.getAllPatient();
+    console.log(this.patients)
+    this.getAllPatients2();
   }
 
 
@@ -46,7 +46,7 @@ export class DashboardPage implements OnInit{
     await popover.present();
     console.log(patient)
     popover.onDidDismiss().then(()=>{
-      this.getAllPatient();
+      this.getAllPatients2();
     })
     const { role } = await popover.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
@@ -58,15 +58,45 @@ export class DashboardPage implements OnInit{
     this.router.navigateByUrl("add-patient");
   }
 
+  getAllPatients2(){
+    console.log("aaa",this.patients)
+    this.patientService.getUserId(localStorage.getItem("username")).pipe(
+      mergeMap((data1)=>{
+        console.log(data1)
+        return this.patientService.getPatients().pipe(
+          map(data2 =>{
+            console.log(data2)
+            data2.forEach((x: any)=>{
+              console.log(x.user.id)
+              if (x.user.id == data1){
+                this.patients.push(x)
+              }
+            })
+          })
 
-  getAllPatient(){
-    this.patientService.getPatients().subscribe((response: Patient[])=>{
-      this.patients = response;
-      console.log(response);
-    },(error: HttpErrorResponse) =>
-      alert(error.message)
-      )
+        )
+      })
+    ).subscribe();
   }
+
+  // const getPatient = (pat: Patient)=>{ pat.user = }
+
+  // getAllPatient(){
+  //   this.patientService.getPatients().subscribe((response: Patient[])=>{
+  //     this.patients = response;
+  //       console.log(response[1].user)
+  //     this.patients.filter(()=>{
+  //       this.patients.forEach((x)=>{
+  //         if (x.user == 2)
+  //           console.log("qqq",x.username)
+  //       })
+  //     })
+  //     console.log(this.patients);
+  //     // this.patients.filter(filterByUsername())
+  //   },(error: HttpErrorResponse) =>
+  //     alert(error.message)
+  //     )
+  // }
 
 
 
