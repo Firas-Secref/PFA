@@ -60,18 +60,13 @@ export class DashboardPage implements OnInit{
 
   getAllPatients2(){
     console.log("aaa",this.patients)
+    console.log(localStorage.getItem("username"))
     this.patientService.getUserId(localStorage.getItem("username")).pipe(
-      mergeMap((data1)=>{
+      mergeMap((data1: number)=>{
         console.log(data1)
-        return this.patientService.getPatients().pipe(
+        return this.patientService.getMyPatients(data1).pipe(
           map(data2 =>{
-            console.log(data2)
-            data2.forEach((x: any)=>{
-              console.log(x.user.id)
-              if (x.user.id == data1){
-                this.patients.push(x)
-              }
-            })
+            this.patients = data2;
           })
 
         )

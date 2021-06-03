@@ -10,6 +10,7 @@ import {Patient} from "../Entity/Patient";
 export class PatientService {
 
   private apiServerUrlPatient = environment.apiBaseUrlPatient;
+  private apiServerUrlUser = environment.apiBaseUrlUser;
   constructor(private http: HttpClient) { }
 
   public getPatients(): Observable<Patient[]>{
@@ -33,10 +34,14 @@ export class PatientService {
   }
 
   public getUserId(username: string): Observable<number>{
-    return this.http.get<number>(`${this.apiServerUrlPatient}/getID/${username}`)
+    return this.http.get<number>(`${this.apiServerUrlUser}/getUserId/${username}`)
   }
 
   public getPatientId(username: string): Observable<number>{
     return this.http.get<number>(`${this.apiServerUrlPatient}/getPatientId/${username}`)
+  }
+
+  public getMyPatients(id: number): Observable<Patient[]>{
+    return this.http.get<Patient[]>(`${this.apiServerUrlPatient}/myPatients/${id}`);
   }
 }

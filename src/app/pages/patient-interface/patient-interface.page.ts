@@ -63,8 +63,8 @@ export class PatientInterfacePage implements OnInit {
         JSON.stringify(
           { 'latitude': lat,
                   'longitude': lng,
-                  'id': patientId
-          }
+                  'patientId': patientId
+                }
         )
       );
     })

@@ -7,6 +7,7 @@ export const environment = {
   apiBaseUrlPatient: 'http://localhost:8080/patient',
   apiBaseUrlLocation: 'http://localhost:8080/location',
   apiBaseUrlUser: 'http://localhost:8080/user',
+  loginUrl: 'http://localhost:8080/login'
 
 };
 

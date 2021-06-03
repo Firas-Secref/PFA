@@ -9,12 +9,12 @@ import {Router} from "@angular/router";
 })
 export class LoginService {
 
-  private loginUser = environment.apiBaseUrlUser;
+  private loginUser = environment.loginUrl;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   public login(formData: FormData):Observable<any>{
-    return this.http.post<FormData>(`${this.loginUser}/login`, formData)
+    return this.http.post<FormData>(`${this.loginUser}`, formData)
   }
 
   loggedIn(){
