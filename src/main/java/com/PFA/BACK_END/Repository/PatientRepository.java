@@ -18,6 +18,9 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     Long findId(String username);
 
 
-    @Query(value = "select username from Patient UNION select username from super_user")
-    List<Patient> getMyPatients(String username);
+//    @Query(value = "select username from Patient UNION (select username from super_user)")
+    @Query(value = "select * from Patient where user_id = ?1", nativeQuery = true)
+    List<Patient> getMyPatients(Long id);
+
+
 }

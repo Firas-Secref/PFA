@@ -1,12 +1,10 @@
 package com.PFA.BACK_END.services;
 
-import com.PFA.BACK_END.Entity.Location;
-import com.PFA.BACK_END.Entity.Login;
-import com.PFA.BACK_END.Entity.Patient;
-import com.PFA.BACK_END.Entity.SuperUser;
+import com.PFA.BACK_END.Entity.*;
 import com.PFA.BACK_END.Exceptions.UserNotFoundException;
 import com.PFA.BACK_END.Repository.PatientRepository;
 import com.PFA.BACK_END.Repository.SuperUserRepository;
+import com.PFA.BACK_END.Repository.UsersRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.util.List;
 
 @Service
 public class SuperUserService {
@@ -30,6 +27,9 @@ public class SuperUserService {
     @Autowired
     private PatientRepository patientRepository;
 
+    @Autowired
+    private UsersRepository usersRepository;
+
     public SuperUser addSuperUser(SuperUser superUser){
         return this.superUserRepository.save(superUser);
     }
@@ -37,6 +37,8 @@ public class SuperUserService {
     public SuperUser addSuperUser(String user) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         SuperUser newUser = mapper.readValue(user, SuperUser.class);
+        newUser.setRole("ADMIN");
+        System.out.println("aaaa"+newUser.getRole());
         System.out.println(newUser.getUsername());
         return this.superUserRepository.save(newUser);
     }
@@ -52,6 +54,10 @@ public class SuperUserService {
         }
         newUser.setProfileImage(Base64.getEncoder().encodeToString(file.getBytes()));
         newUser.setPassword(this.encodePassword(newUser.getPassword()));
+        newUser.setRole("ADMIN");
+        System.out.println("aaaa"+newUser.getRole());
+        Users loginUser = new Users(newUser.getUsername(), newUser.getPassword(), newUser.getRole());
+        this.usersRepository.save(loginUser);
         return this.superUserRepository.save(newUser);
     }
 
@@ -89,34 +95,13 @@ public class SuperUserService {
         return this.patientRepository.findByUsername(username);
     }
 
-    public boolean login(String loginUser) throws JsonProcessingException {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        ObjectMapper mapper = new ObjectMapper();
-        Login usernameAndPassword = mapper.readValue(loginUser, Login.class);
-        System.out.println(loginUser);
-        System.out.println(usernameAndPassword.getPassword());
-        System.out.println(usernameAndPassword.getUsername());
-
-        SuperUser user = this.findByUsername(usernameAndPassword.getUsername());
-        Patient patient = this.patientRepository.findByUsername(usernameAndPassword.getUsername());
-//        Patient patient = this.findPatientByUsername(usernameAndPassword.getUsername());
-        if (user!=null){
-            if (passwordEncoder.matches(usernameAndPassword.getPassword(), user.getPassword())){
-                System.out.println("matche");
-                return true;
-            }else{
-                    System.out.println("no matche");
-                    return false;
-                }
-        }
-        return false;
-
-    }
 
     public Long getId(String username){
         return this.superUserRepository.findId(username);
     }
+
+
 
 
 }

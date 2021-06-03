@@ -46,7 +46,7 @@ public class SuperUser implements Serializable {
 
     public SuperUser(String firstName, String lastName, String username, String birthDate,
                      String sexe, String ville, String email, String password, String phoneNumber,
-                     String address, String profileImage, List<Patient> patients) {
+                     String address, String profileImage, List<Patient> patients, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -59,7 +59,7 @@ public class SuperUser implements Serializable {
         this.address = address;
         this.profileImage = profileImage;
         this.patients = patients;
-        this.role = "ADMIN";
+        this.role = role;
     }
 
     public Long getId() {

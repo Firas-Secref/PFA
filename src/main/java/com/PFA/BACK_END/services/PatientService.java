@@ -3,9 +3,11 @@ package com.PFA.BACK_END.services;
 import com.PFA.BACK_END.Entity.Location;
 import com.PFA.BACK_END.Entity.Patient;
 import com.PFA.BACK_END.Entity.SuperUser;
+import com.PFA.BACK_END.Entity.Users;
 import com.PFA.BACK_END.Exceptions.PatientNotFoundException;
 import com.PFA.BACK_END.Repository.PatientRepository;
 import com.PFA.BACK_END.Repository.SuperUserRepository;
+import com.PFA.BACK_END.Repository.UsersRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,6 +27,9 @@ public class PatientService {
 
     @Autowired
     private SuperUserRepository userRepository;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     public List<Patient> getAllPatients(){
         return this.patientRepository.findAll();
@@ -51,6 +56,9 @@ public class PatientService {
         newPatient.setUser(thatUser);
         newPatient.setPassword(this.encodePassword(newPatient.getPassword()));
         newPatient.setProfileImage(Base64.getEncoder().encodeToString(file.getBytes()));
+        newPatient.setRole("PATIENT");
+        Users loginUser = new Users(newPatient.getUsername(), newPatient.getPassword(), newPatient.getRole());
+        this.usersRepository.save(loginUser);
         return this.patientRepository.save(newPatient);
     }
 
@@ -93,6 +101,10 @@ public class PatientService {
 //    public List<Patient> getMyPatients(String username){
 //        return this.patientRepository.getMyPatients(username);
 //    }
+
+    public List<Patient> getMyPatients(Long id){
+        return patientRepository.getMyPatients(id);
+    }
 
 
 }

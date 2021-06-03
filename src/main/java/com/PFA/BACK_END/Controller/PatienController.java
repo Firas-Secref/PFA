@@ -48,10 +48,11 @@ public class PatienController {
     public Long getUserIdByUsername(@PathVariable String username){
         return this.patientService.getUserId(username);
     }
-//    @GetMapping("/myPatients/{username}")
-//    public List<Patient> getMyPatients(@PathVariable String username){
-//        return this.patientService.getMyPatients(username);
-//    }
+
+    @GetMapping("/myPatients/{id}")
+    public List<Patient> getMyPatients(@PathVariable Long id){
+        return this.patientService.getMyPatients(id);
+    }
 
     @GetMapping("/getPatientId/{username}")
     public Long getIdByUsername(@PathVariable String username){

@@ -41,18 +41,18 @@ public class SuperUserController {
         return this.userService.updateUser(user);
     }
 
-    @PostMapping("/login")
-    public boolean login(@RequestParam("loginUser") String loginForm) throws JsonProcessingException {
-        System.out.println("got it");
-        return this.userService.login(loginForm);
-    }
+//    @PostMapping("/login")
+//    public boolean login(@RequestParam("loginUser") String loginForm) throws JsonProcessingException {
+//        System.out.println("got it");
+//        return this.userService.login(loginForm);
+//    }
 
     @GetMapping("getUserByUsername/{username}")
     public SuperUser getUserByUsername(@PathVariable String username){
         return this.userService.findByUsername(username);
     }
 
-    @GetMapping("getId/{username}")
+    @GetMapping("getUserId/{username}")
     public Long getId(@PathVariable String username){
         return this.userService.getId(username);
     }
@@ -62,4 +62,6 @@ public class SuperUserController {
 //    public List<Patient> getMy(@PathVariable Long id){
 //        return this.userService.getMyPatients(id);
 //    }
+
+
 }

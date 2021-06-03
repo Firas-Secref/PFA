@@ -36,7 +36,7 @@ public class Patient implements Serializable {
 
     public Patient(String firstName, String lastName, String username, String email,
                    String birthDate, String sexe, String ville, String address, String phoneNumber,
-                   int familyNumber, String phoneNumber1, String phoneNumber2, String profileImage) {
+                   int familyNumber, String phoneNumber1, String phoneNumber2, String profileImage, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -50,7 +50,7 @@ public class Patient implements Serializable {
         this.phoneNumber1 = phoneNumber1;
         this.phoneNumber2 = phoneNumber2;
         this.profileImage = profileImage;
-        this.role = "PATIENT";
+        this.role = role;
     }
 
     public Patient() {
